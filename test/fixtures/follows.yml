@@ -10,8 +10,8 @@ one: {
 }
 # column: value
 #
-# two: {
-#   follower_id: 3,
-#   followed_id: 4
-# }
+two: {
+  follower_id: 2,
+  followed_id: 1
+}
 # column: value

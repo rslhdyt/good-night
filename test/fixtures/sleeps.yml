@@ -6,9 +6,16 @@
 #
 one: {
   user_id: 1,
-  sleep_start: "2025-09-01 00:00:00",
-  sleep_end: "2025-09-01 08:00:00",
-  duration: 8
+  sleep_start: "2025-09-01 22:00:00",
+  sleep_end: "2025-09-02 06:00:00",
+  duration: 8 * 60 * 60
+}
+
+two: {
+  user_id: 2,
+  sleep_start: "2025-09-02 07:00:00",
+  sleep_end: "2025-09-02 07:00:10",
+  duration: 10
 }
 # column: value
 #

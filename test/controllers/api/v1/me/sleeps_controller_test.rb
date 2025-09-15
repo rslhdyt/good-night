@@ -20,7 +20,7 @@ class Api::V1::Me::SleepsControllerTest < ActionDispatch::IntegrationTest
     assert_not_nil json_response["sleep_start"]
     assert_nil json_response["duration"]
 
-    assert_equal Sleep.count, 3
+    assert_equal Sleep.count, 4
   end
 
   test "should not create sleep if user already has an active sleep session" do
