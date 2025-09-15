@@ -13,6 +13,7 @@ module Api
         sleeps = Sleep.where(
                               user_id: following
                             ).previous_week
+                            .completed
                             .sorted_by_duration
                             .limit(10)
 
