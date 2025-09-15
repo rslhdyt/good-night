@@ -5,15 +5,22 @@ module Api
         before_action :authenticate_user!
 
         def index
-          User.find(params[:follower_id])
+          user_ids = Follow.where(follower_id: params[:follower_id]).pluck(:followed_id)
 
-          sleeps = Sleep.joins("INNER JOIN follows ON follows.followed_id = sleeps.user_id")
-            .where(follows: { follower_id: params[:follower_id] })
-            .includes(:user)
-            .completed
-            .previous_week
-            .sorted_by_duration
-            .limit(10)
+          raise ActiveRecord::RecordNotFound if user_ids.empty?
+
+          sleeps = Rails.cache.fetch(
+            ["follower_sleeps", user_ids.count],
+            expires_in: 1.hour
+          ) do
+            Sleep.where(user_id: user_ids)
+              .includes(:user)
+              .completed
+              .previous_week
+              .sorted_by_duration
+              .limit(10)
+              .to_a
+          end
 
           render json: sleeps, include: { user: { only: :name } }
         end
@@ -21,3 +28,11 @@ module Api
     end
   end
 end
+
+sleeps = Sleep.joins("INNER JOIN follows ON follows.followed_id = sleeps.user_id")
+.where(follows: { follower_id: 1 })
+.includes(:user)
+.completed
+.previous_week
+.sorted_by_duration
+.limit(10)
