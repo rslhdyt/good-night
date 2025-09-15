@@ -63,3 +63,16 @@ To determine the user, we will use the following header:
 ### Get sleep records of all followers of users
 - GET /api/v1/followers/:user_id/sleeps
 
+## Running the project
+
+### Prerequisites
+1. Bundle
+2. PostgreSQL
+3. Ruby 3.2.2
+
+### Running the project
+1. Clone the repository
+2. Run `bin/setup`
+
+### Running the tests
+1. Run `bin/rails test`
