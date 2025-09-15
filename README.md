@@ -42,20 +42,24 @@ Good night app is a sleep tracking app that allows users to track their sleep re
 To determine the user, we will use the following header:
 - X-User-Id: integer
 
-### Clock In
-- POST /api/v1/sleeps
+### Clock In as a currentuser
+- POST /api/v1/me/sleeps
 
-### Clock Out
-- PATCH /api/v1/sleeps/:id
+### Clock Out as a current user
+- PATCH /api/v1/me/sleeps/:id
 
-### Get Sleep Records
-- GET /api/v1/sleeps
+### Get Sleep Records as a current user
+- GET /api/v1/me/sleeps
 
-### Follow User
-- POST /api/v1/users/me/follow/:user_id
+### Follow user as a current user
+- POST /api/v1/me/follow/:user_id
 
-### Unfollow User
-- DELETE /api/v1/users/me/follow/:user_id
+### Unfollow user as a current user
+- DELETE /api/v1/me/follow/:user_id
 
-### Get Followed Users
-- GET /api/v1/users/me/following
+### Get sleep records of all current user's followers
+- GET /api/v1/me/following/sleeps
+
+### Get sleep records of all followers of users
+- GET /api/v1/followers/:user_id/sleeps
+
