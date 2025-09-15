@@ -5,14 +5,17 @@ module Api
         before_action :authenticate_user!
 
         def index
-            sleeps = Sleep.joins("INNER JOIN follows ON follows.followed_id = sleeps.user_id")
-              .where(follows: { follower_id: params[:follower_id] })
-              .includes(:user)
-              .previous_week
-              .sorted_by_duration
-              .limit(10)
+          User.find(params[:follower_id])
 
-            render json: sleeps, include: { user: { only: :name } }
+          sleeps = Sleep.joins("INNER JOIN follows ON follows.followed_id = sleeps.user_id")
+            .where(follows: { follower_id: params[:follower_id] })
+            .includes(:user)
+            .completed
+            .previous_week
+            .sorted_by_duration
+            .limit(10)
+
+          render json: sleeps, include: { user: { only: :name } }
         end
       end
     end
