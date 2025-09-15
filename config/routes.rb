@@ -11,14 +11,17 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :me do
         # resources :sleeps, only: [:create, :update, :index]
-        resources :follows, only: [:index,:create, :destroy] do
-          resources :sleeps, only: [:index]
-        end
+        resources :follows, only: [:index, :create, :destroy]
+        resources :sleeps, only: [:index, :create, :update]
       end
 
-      resource :me, only: [:show]
+      resource :me, only: [:show] do
+        get :following_sleeps
+      end
 
-      # resources :following, only: [:index]
+      resources :followers, only: [:show] do
+        resources :sleeps, only: [:index], module: :followers
+      end
     end
   end
 end
