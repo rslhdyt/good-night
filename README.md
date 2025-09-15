@@ -52,10 +52,10 @@ To determine the user, we will use the following header:
 - GET /api/v1/me/sleeps
 
 ### Follow user as a current user
-- POST /api/v1/me/follow/:user_id
+- POST /api/v1/me/follows
 
 ### Unfollow user as a current user
-- DELETE /api/v1/me/follow/:user_id
+- DELETE /api/v1/me/follows/:user_id
 
 ### Get sleep records of all current user's followers
 - GET /api/v1/me/following/sleeps
