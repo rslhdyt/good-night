@@ -5,18 +5,13 @@
 # below each fixture, per the syntax in the comments below
 #
 one: {
-  id: 1,
-  name: "John Doe"
+  follower_id: 1,
+  followed_id: 2
 }
-# column: value 
+# column: value
 #
-two: {
-  id: 2,
-  name: "Jane Smith"
-}
-
-three: {
-  id: 3,
-  name: "John Doe"
-}
+# two: {
+#   follower_id: 3,
+#   followed_id: 4
+# }
 # column: value
