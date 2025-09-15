@@ -10,14 +10,21 @@ module Api
       # TODO: optimize this query by using joins
       def following_sleeps
         following = current_user.followings.pluck(:followed_id)
-        sleeps = Sleep.where(
-                              user_id: following
-                            ).previous_week
-                            .completed
-                            .sorted_by_duration
-                            .limit(10)
 
-        render json: sleeps
+        sleeps = Rails.cache.fetch(
+            ["following_sleeps", following.count],
+            expires_in: 1.hour
+          ) do
+            Sleep.where(user_id: following)
+              .includes(:user)
+              .completed
+              .previous_week
+              .sorted_by_duration
+              .limit(10)
+              .to_a
+          end
+
+        render json: sleeps, include: { user: { only: :name } }
       end
     end
   end

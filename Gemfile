@@ -44,6 +44,12 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # MiniProfiler for Rails [https://github.com/MiniProfiler/rack-mini-profiler]
+  gem "rack-mini-profiler"
+
+  # Active Record Import for bulk inserts [https://github.com/zdennis/activerecord-import]
+  gem "activerecord-import"
 end
 
 gem "dotenv-rails"
