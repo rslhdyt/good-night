@@ -6,6 +6,18 @@ module Api
       def show
         render json: current_user
       end
+
+      # TODO: optimize this query by using joins
+      def following_sleeps
+        following = current_user.followings.pluck(:followed_id)
+        sleeps = Sleep.where(
+                              user_id: following
+                            ).previous_week
+                            .sorted_by_duration
+                            .limit(10)
+
+        render json: sleeps
+      end
     end
   end
 end

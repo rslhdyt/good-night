@@ -27,4 +27,14 @@ class Api::V1::MesControllerTest < ActionDispatch::IntegrationTest
     assert_equal json_response["id"], user.id 
     assert_equal json_response["name"], user.name
   end
+
+  test "should return following sleeps" do
+    get following_sleeps_api_v1_me_url, headers: { "X-User-Id" => users(:one).id }
+
+    assert_response :success
+
+    json_response = JSON.parse(response.body)
+
+    assert_equal json_response.length, 1
+  end
 end

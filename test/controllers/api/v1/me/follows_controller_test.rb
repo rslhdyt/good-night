@@ -20,7 +20,8 @@ class Api::V1::Me::FollowsControllerTest < ActionDispatch::IntegrationTest
 
     json_response = JSON.parse(response.body)
 
-    assert_equal json_response["message"], "Followed successfully"
+    assert_equal json_response["followed_id"], users(:three).id
+    assert_equal json_response["follower_id"], users(:one).id
   end
 
   test "should not create follow if user is not found" do

@@ -12,10 +12,7 @@ module Api
           followed = current_user.followings.build(followed_id: params[:user_id])
           
           if followed.save
-            render json: {
-              message: "Followed successfully",
-              followed: followed
-            }, status: :created
+            render json: followed, status: :created
           else
             render json: followed.errors, status: :unprocessable_content
           end

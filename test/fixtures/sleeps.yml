@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {
+  user_id: 1,
+  sleep_start: "2025-09-01 00:00:00",
+  sleep_end: "2025-09-01 08:00:00",
+  duration: 8
+}
+# column: value
+#
+active: {
+  user_id: 2,
+  sleep_start: "2025-09-01 00:00:00",
+  sleep_end: nil,
+  duration: nil
+}
+# column: value
