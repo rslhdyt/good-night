@@ -11,9 +11,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :me do
         # resources :sleeps, only: [:create, :update, :index]
-        # resources :follow, only: [:create, :destroy] do
-        #   resources :sleeps, only: [:index]
-        # end
+        resources :follows, only: [:index,:create, :destroy] do
+          resources :sleeps, only: [:index]
+        end
       end
 
       resource :me, only: [:show]
