@@ -6,7 +6,7 @@ class Sleep < ApplicationRecord
   validates :duration, presence: true, on: :update
 
   scope :has_active_session, -> { where(sleep_end: nil) }
-  scope :completed, -> { where.not(sleep_end: nil) }
+  scope :completed, -> { where.not(duration: nil) }
   scope :previous_week, -> do 
     # oh my, this is why I love ruby
     where(created_at: 1.week.ago..Time.now)
