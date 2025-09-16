@@ -24,4 +24,6 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get "docs/api", to: "docs#api"
 end
