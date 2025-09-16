@@ -86,8 +86,6 @@ production:
   primary: &primary_production
     <<: *default
     database: good_night_production
-    username: good_night
-    password: <%= ENV["GOOD_NIGHT_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
     database: good_night_production_cache
