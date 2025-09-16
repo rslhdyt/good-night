@@ -49,7 +49,7 @@ group :development, :test do
   gem "rack-mini-profiler"
 
   # Active Record Import for bulk inserts [https://github.com/zdennis/activerecord-import]
-  gem "activerecord-import"
 end
 
 gem "dotenv-rails"
+gem "activerecord-import"
