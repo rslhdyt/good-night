@@ -28,11 +28,3 @@ module Api
     end
   end
 end
-
-sleeps = Sleep.joins("INNER JOIN follows ON follows.followed_id = sleeps.user_id")
-.where(follows: { follower_id: 1 })
-.includes(:user)
-.completed
-.previous_week
-.sorted_by_duration
-.limit(10)
